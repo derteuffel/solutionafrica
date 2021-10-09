@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Utilisateurs | Solution Africa Sarl</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/font-awesome.min.css}" rel="stylesheet">
+    <link th:href="@{/css/pe-icons.css}" rel="stylesheet">
+    <link th:href="@{/css/prettyPhoto.css}" rel="stylesheet">
+    <link th:href="@{/css/animate.css}" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <script th:src="@{/js/jquery.js}"></script>
+    <script th:src="@{/js/html5shiv.js}"></script>
+    <script th:src="@{/js/respond.min.js}"></script>
+    <link rel="shortcut icon" th:href="@{/images/logo.png}">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" th:href="@{/images/ico/apple-touch-icon-144x144.png}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" th:href="@{/images/ico/apple-touch-icon-114x114.png}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" th:href="@{/images/ico/images/ico/apple-touch-icon-72x72.png}">
+    <link rel="apple-touch-icon-precomposed" th:href="@{/images/ico/apple-touch-icon-57x57.png}">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+
+    <script type="text/javascript">
+    jQuery(document).ready(function($){
+    'use strict';
+        jQuery('body').backstretch([
+            "../../images/bg/bg4.jpg",
+            "../../images/bg/bg3.jpg",
+            "../../images/bg/bg5.jpg"
+        ], {duration: 5000, fade: 500});
+
+        $("#mapwrapper").gMap({ controls: false,
+            scrollwheel: false,
+            markers: [{
+                latitude:40.7566,
+                longitude: -73.9863,
+            icon: { image: "images/marker.png",
+                iconsize: [44,44],
+                iconanchor: [12,46],
+                infowindowanchor: [12, 0] } }],
+            icon: {
+                image: "images/marker.png",
+                iconsize: [26, 46],
+                iconanchor: [12, 46],
+                infowindowanchor: [12, 0] },
+            latitude:40.7566,
+            longitude: -73.9863,
+            zoom: 14 });
+    });
+    </script>
+</head><!--/head-->
+<body>
+<div id="preloader"></div>
+    <header th:replace="~{../templates/fragments/header :: header}"></header><!--/header-->
+
+    <section id="single-page-slider" class="no-margin">
+        <div class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="center gap fade-down section-heading">
+                                    <h2 class="main-title">Gestion des utilisateurs</h2>
+                                    <hr>
+                                    <p>Controler l'activiter de tous les utilisateurs connecter a la partie administrateur de votre site.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/.item-->
+            </div><!--/.carousel-inner-->
+        </div><!--/.carousel-->
+    </section><!--/#main-slider-->
+
+    <div id="content-wrapper">
+        <section id="blog" class="white">
+            <div class="container">
+            <div class="gap"></div>
+                <div class="row">
+                    <span th:text="${success}" class="text-success"></span>
+                    <span th:text="${error}" class="text-danger"></span>
+                    <aside class="col-sm-4 col-sm-push-8">
+                        <div class="widget search">
+                            <button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addRowModal">
+                                <i class="fa fa-plus"></i>
+                                Utilisateur
+                            </button>
+                            <button class="btn btn-secondary btn-round ml-auto" data-toggle="modal" data-target="#updateRowModal">
+                                <i class="fa fa-pencil"></i>
+                                Role
+                            </button>
+
+                        </div><!--/.search-->
+
+
+                        <div class="widget categories">
+                            <h3 class="widget-title">Categories des annonces</h3>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <ul class="arrow">
+                                        <li><a th:href="@{/posts/lists/}+${'Fashion'}">Fashion</a></li>
+                                        <li><a th:href="@{/posts/lists/}+${'Design'}">Design</a></li>
+                                        <li><a th:href="@{/posts/lists/}+${'Music'}">Music</a></li>
+                                        <li><a th:href="@{/posts/lists/}+${'Photographie'}">Photographie</a></li>
+                                        <li><a th:href="@{/posts/lists/}+${'Evenementiel'}">Evenementiel</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-6">
+                                    <ul class="arrow">
+                                        <li><a th:href="@{/posts/lists/}+${'Web_Design'}">Web Design</a></li>
+                                        <li><a th:href="@{/posts/lists/}+${'Imprimerie'}">Imprimerie</a></li>
+                                        <li><a th:href="@{/posts/lists/}+${'Informatique'}">Informatique</a></li>
+                                        <li><a th:href="@{/posts/lists/}+${'Autres'}">Autres</a></li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div><!--/.categories-->
+
+                    </aside>
+                    <div class="col-sm-8 col-sm-pull-4">
+                        <div class="blog">
+                            <div class="blog-item">
+                                <table id="tab" class="table table-bordered table-responsive">
+                                    <thead>
+                                        <th>Nom utilisateur</th>
+                                        <th>Email</th>
+                                        <th>Telephone</th>
+                                        <th>Role</th>
+                                        <th>Actions</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="item : ${lists}">
+                                            <td th:text="${item.username}"></td>
+                                            <td th:text="${item.email}"></td>
+                                            <td th:text="${item.phone}"></td>
+                                            <td><ul th:each="word : ${item.roles}">
+                                                    <li><span th:text="${word}"></span></li>
+                                                </ul>
+                                            </td>
+                                            <td>
+                                                <a th:if="${item.status} == true" th:href="@{/admin/users/activate/}+${item.id}"  class="text-success btn delete" data-confirm="Voulez-vous vraiment desactive cet element?"><i class="fa fa-trash"></i></a>
+                                                <a th:unless="${item.status} == true" th:href="@{/admin/users/activate/}+${item.id}"  class="text-danger btn delete" data-confirm="Voulez-vous vraiment reactive cet element?"><i class="fa fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div><!--/.blog-item-->
+                            <!--/.blog-item--><!--/.pagination-->
+                        </div>
+                    </div><!--/.col-md-8-->
+                </div><!--/.row-->
+            </div>
+        </section><!--/#blog-->
+    </div>
+
+<div class="modal fade in" id="addRowModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header no-bd">
+                <h5 class="modal-title">
+														<span class="fw-mediumbold">
+														Formulaire d'un nouvel</span>
+                    <span class="fw-light">
+															Utilisateur
+														</span>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form th:action="@{/admin/users/save}" method="post" th:object="${userDto}">
+                <div class="modal-body">
+                    <p class="small">Bien vouloir renseigner les champs ci-dessous pour ajouter un nouvel utilisateur</p>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group form-group-default">
+                                <label>Nom utilisateur :</label>
+                                <input id="addPosition" type="text" th:field="*{username}" class="form-control" placeholder="Nom utilisateur">
+                            </div>
+                            <div class="form-group form-group-default">
+                                <label>Email :</label>
+                                <input  type="email" th:field="*{email}" class="form-control" placeholder="Email">
+                            </div>
+                            <div class="form-group form-group-default">
+                                <label>Telephone :</label>
+                                <input  type="text" th:field="*{phone}" class="form-control" placeholder="Telephone">
+                            </div>
+                            <div class="form-group form-group-default">
+                                <label>Role :</label>
+                                <select th:field="*{role}" class="form-control" id="">
+                                    <option value="" disabled>-- Choisir un role --</option>
+                                    <option th:value="${'ROLE_'+item}" th:text="${item}" th:each="item : ${T(com.derteuffel.solutionafrica.enums.Roles).values()}"></option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer no-bd">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                    <button type="submit"  class="btn btn-primary">Enregistrer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade in" id="updateRowModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header no-bd">
+                <h5 class="modal-title">
+														<span class="fw-mediumbold">
+														Formulaire de modification d'un</span>
+                    <span class="fw-light">
+															Role Utilisateur
+														</span>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form th:action="@{/admin/users/role/update}" method="get" >
+                <div class="modal-body">
+                    <p class="small">Bien vouloir renseigner les champs ci-dessous pour associer un role a un utilisateur</p>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group form-group-default">
+                                <label>Utilisateur :</label>
+                                <select name="username" class="form-control" id="">
+                                    <option value="" disabled>-- Choisir un utilisateur --</option>
+                                    <option th:value="${item.id}" th:text="${item.username+' '+item.email}" th:each="item : ${lists}"></option>
+                                </select>
+                            </div>
+                            <div class="form-group form-group-default">
+                                <label>Role :</label>
+                                <select name="role" class="form-control" id="">
+                                    <option value="" disabled>-- Choisir un role --</option>
+                                    <option th:value="${'ROLE_'+item}" th:text="${item}" th:each="item : ${T(com.derteuffel.solutionafrica.enums.Roles).values()}"></option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer no-bd">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                    <button type="submit"  class="btn btn-primary">Enregistrer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+    <div th:replace="~{../templates/fragments/footer :: footer}" ><!--/#footer-->
+    </div>
+
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/jquery.prettyPhoto.js}"></script>
+    <script th:src="@{/js/plugins.js}"></script>
+    <script th:src="@{/js/init.js}"></script>
+<script>
+    $(document).ready( function () {
+        $('#tab').DataTable();
+    } );
+</script>
+<script>
+    var deleteLinks = document.querySelectorAll('.delete');
+
+    for (var i = 0; i < deleteLinks.length; i++) {
+        deleteLinks[i].addEventListener('click', function(event) {
+            event.preventDefault();
+
+            var choice = confirm(this.getAttribute('data-confirm'));
+
+            if (choice) {
+                window.location.href = this.getAttribute('href');
+            }
+        });
+    }
+</script>
+</body>
+</html>

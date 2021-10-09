@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Connexion | Solution Africa Sarl</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/font-awesome.min.css}" rel="stylesheet">
+    <link th:href="@{/css/pe-icons.css}" rel="stylesheet">
+    <link th:href="@{/css/prettyPhoto.css}" rel="stylesheet">
+    <link th:href="@{/css/animate.css}" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <script th:src="@{/js/jquery.js}"></script>
+    <script th:src="@{/js/html5shiv.js}"></script>
+    <script th:src="@{/js/respond.min.js}"></script>
+    <link rel="shortcut icon" th:href="@{/images/logo.png}">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" th:href="@{/images/ico/apple-touch-icon-144x144.png}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" th:href="@{/images/ico/apple-touch-icon-114x114.png}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" th:href="@{/images/ico/images/ico/apple-touch-icon-72x72.png}">
+    <link rel="apple-touch-icon-precomposed" th:href="@{/images/ico/apple-touch-icon-57x57.png}">
+
+    <script type="text/javascript">
+    jQuery(document).ready(function($){
+    'use strict';
+        jQuery('body').backstretch([
+            "http://placehold.it/800x600",
+            "http://placehold.it/800x600",
+            "http://placehold.it/800x600"
+        ], {duration: 5000, fade: 500});
+
+        $("#mapwrapper").gMap({ controls: false,
+            scrollwheel: false,
+            markers: [{
+                latitude:40.7566,
+                longitude: -73.9863,
+            icon: { image: "images/marker.png",
+                iconsize: [44,44],
+                iconanchor: [12,46],
+                infowindowanchor: [12, 0] } }],
+            icon: {
+                image: "images/marker.png",
+                iconsize: [26, 46],
+                iconanchor: [12, 46],
+                infowindowanchor: [12, 0] },
+            latitude:40.7566,
+            longitude: -73.9863,
+            zoom: 14 });
+    });
+    </script>
+</head><!--/head-->
+<body>
+<div id="preloader"></div>
+    <header th:replace="~{../templates/fragments/header :: header}"></header><!--/header-->
+
+    <section id="single-page-slider" class="no-margin">
+        <div class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="center gap fade-down section-heading">
+                                    <h2 class="main-title">Page de connexion</h2>
+                                    <hr>
+                                    <p>Connectez-vous pour controler votre site.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/.item-->
+            </div><!--/.carousel-inner-->
+        </div><!--/.carousel-->
+    </section><!--/#main-slider-->
+
+    <div id="content-wrapper">
+        <section id="blog" class="white m-5">
+            <div class="container">
+            <div class="gap"></div>
+            <div class="gap"></div>
+
+                    <div class="mx-5 ">
+                        <div class="blog" style="width: 50%;">
+                            <div class="blog-item">
+                                <form th:action="@{/admin/login/process}" method="post" >
+                                    <div class="modal-body">
+                                        <p class="small">Connexion a votre compte </p>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="form-group form-group-default">
+                                                    <label>Nom d'utilisateur/Email :</label>
+                                                    <input id="addPosition" type="text" name="username" class="form-control" placeholder="Nom d'utilisateur/Email">
+                                                </div>
+                                                <div class="form-group form-group-default">
+                                                    <label>Mot de passe :</label>
+                                                    <input  type="password" name="password" class="form-control" placeholder="Mot de passe">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer no-bd">
+                                        <button type="submit"  class="btn btn-primary">Connexion</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div class="gap"></div>
+            <div class="gap"></div>
+
+        </section><!--/#blog-->
+    </div>
+
+
+
+    <div th:replace="~{../templates/fragments/footer :: footer}" ><!--/#footer-->
+    </div>
+
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/jquery.prettyPhoto.js}"></script>
+    <script th:src="@{/js/plugins.js}"></script>
+    <script th:src="@{/js/init.js}"></script>
+</body>
+</html>

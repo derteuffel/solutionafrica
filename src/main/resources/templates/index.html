@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Accueil | Solution Africa Sarl</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/font-awesome.min.css}" rel="stylesheet">
+    <link th:href="@{/css/pe-icons.css}" rel="stylesheet">
+    <link th:href="@{/css/prettyPhoto.css}" rel="stylesheet">
+    <link th:href="@{/css/animate.css}" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <script th:src="@{/js/jquery.js}"></script>
+    <!--[if lt IE 9]>
+    <script th:src="@{/js/html5shiv.js}"></script>
+    <script th:src="@{/js/respond.min.js}"></script>
+    <![endif]-->
+    <link rel="shortcut icon" th:href="@{/images/logo.png}">
+    <link rel="apple-touch-icon" sizes="144x144" th:href="@{/images/ico/apple-touch-icon-144x144.png}">
+    <link rel="apple-touch-icon" sizes="114x114" th:href="@{/images/ico/apple-touch-icon-114x114.png}">
+    <link rel="apple-touch-icon" sizes="72x72" th:href="@{/images/ico/apple-touch-icon-72x72.png}">
+    <link rel="apple-touch-icon" th:href="@{/images/ico/apple-touch-icon-57x57.png}">
+
+    <script type="text/javascript">
+    jQuery(document).ready(function($){
+	'use strict';
+      	jQuery('body').backstretch([
+	        "images/bg/bg1.jpg",
+	        "images/bg/bg2.jpg",
+	        "images/bg/bg3.jpg"
+	    ], {duration: 5000, fade: 500, centeredY: true });
+
+		$("#mapwrapper").gMap({ controls: false,
+         	scrollwheel: false,
+         	markers: [{
+              	latitude:40.7566,
+				longitude: -73.9863,
+          	icon: { image: "images/marker.png",
+              	iconsize: [44,44],
+          		iconanchor: [12,46],
+          		infowindowanchor: [12, 0] } }],
+          	icon: {
+              	image: "images/marker.png",
+             	iconsize: [26, 46],
+              	iconanchor: [12, 46],
+              	infowindowanchor: [12, 0] },
+         	latitude:40.7566,
+         	longitude: -73.9863,
+          	zoom: 14 });
+    });
+    </script>
+</head><!--/head-->
+<body>
+<div id="preloader"></div>
+
+    <header th:replace="~{../templates/fragments/header :: header}"></header>
+    <section id="main-slider" class="no-margin">
+        <div class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="carousel-content center centered">
+                                	<span class="home-icon  bounce-in"><img th:src="@{/images/logo.png}" height="80" width="80" alt=""></span>
+                                    <h2 class="boxed animation animated-item-1 fade-down">SOLUTION AFRICA S.A.R.L</h2>
+                                    <p class="boxed animation animated-item-2 fade-up">Faites vous connaitre</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/.item-->
+            </div><!--/.carousel-inner-->
+        </div><!--/.carousel-->
+    </section><!--/#main-slider-->
+
+    <div id="content-wrapper">
+        <section id="services" class="white">
+            <div class="container">
+            <div class="gap"></div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="center gap fade-down section-heading">
+                            <h2 class="main-title">Nos services</h2>
+                            <hr>
+                            <p>Societe de communication 360o et en Ingenieurie informatique</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 col-sm-6">
+                        <div class="service-block">
+                            <div class="pull-left bounce-in">
+                                <a th:href="@{/ecommerces/photographies/lists}">
+                                    <i class="fa fa-camera fa fa-md"></i>
+                                </a>
+                            </div>
+                            <div class="media-body fade-up">
+                                <a th:href="@{/ecommerces/photographies/lists}">
+                                    <h3 class="media-heading">Photographie & Evenementielle</h3>
+                                    <p>Faites vous Capturer dans notre studio equiper des appareils de dernieres generation et surtout des photographes avec une grandes experiences dans la photographie.
+                                        Faites de votre ceremonie un moment innoubliable, nous couvrons l'ensemble de vos evenement, avec une vue aerienne grace a des drones de qualites superieur</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div><!--/.col-md-4-->
+                    <div class="col-md-4 col-sm-6">
+                        <div class="service-block">
+                            <div class="pull-left bounce-in">
+                                <a th:href="@{/ecommerces/imprimeries/lists}">
+                                    <i class="fa fa-print fa fa-md"></i>
+                                </a>
+                            </div>
+                            <div class="media-body fade-up">
+                                <a th:href="@{/ecommerces/imprimeries/lists}">
+                                    <h3 class="media-heading">Imprimerie</h3>
+                                    <p>Avec un paquet d'imprimante qui vous donne la possibilite d'imprimer sur tous vos supports, notre imprimerie es la pour repondre a tous vos besoin d'impression</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div><!--/.col-md-4-->
+                    <div class="col-md-4 col-sm-6">
+                        <div class="service-block">
+                            <div class="pull-left bounce-in">
+                                <i class="fa fa-cogs fa fa-md"></i>
+                            </div>
+                            <div class="media-body fade-up">
+                                <h3 class="media-heading">Conception et implementation de logiciel</h3>
+                                <p>Grace a une equipe de jeunes Ingenieures dynamique, vous avez la solution a tous vos problemes de logiciel(Ecommerce, Entreprise, Gestion, simple site web, Mobile et reseaux sociaux)  .</p>
+                            </div>
+                        </div>
+                    </div><!--/.col-md-4-->
+
+                </div><!--/.row-->
+            </div>
+            <div class="gap"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="center gap fade-down section-heading">
+                            <h2 class="main-title">Nos Competences</h2>
+                            <hr>
+                            <p>Nous vous presentons quelques appreciations de nos competences.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+            <div class="row">
+	                <div class="col-md-3">
+	                    <div class="tile-progress tile-red bounce-in">
+	                        <div class="tile-header">
+	                            <h3>Photgraphie et Montage Video</h3>
+	                            <span>Tous ont ete satisfait par nos clichets impressionnants.</span>
+	                        </div>
+	                        <div class="tile-progressbar">
+	                            <span data-fill="65.5%" style="width: 65.5%;"></span>
+	                        </div>
+	                        <div class="tile-footer">
+	                            <h4>
+	                                <span class="pct-counter counter">65.5</span>%
+	                            </h4>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="col-md-3">
+	                    <div class="tile-progress tile-cyan bounce-in">
+	                        <div class="tile-header">
+	                            <h3>Imprimerie</h3>
+	                            <span>L'impression de qualite c'est chez nous et sur des supports de meilleurs qualite.</span>
+	                        </div>
+	                        <div class="tile-progressbar">
+	                            <span data-fill="98.5%" style="width: 98.5%;"></span>
+	                        </div>
+	                        <div class="tile-footer">
+	                            <h4>
+	                                <span class="pct-counter counter">98.5</span>%
+	                            </h4>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="col-md-3">
+	                    <div class="tile-progress tile-primary bounce-in">
+	                        <div class="tile-header">
+	                            <h3>Solution Logiciel</h3>
+	                            <span>Interpreter le monde numeriquement est notre passion.</span>
+	                        </div>
+	                        <div class="tile-progressbar">
+	                            <span data-fill="70%" style="width: 70%;"></span>
+	                        </div>
+	                        <div class="tile-footer">
+	                            <h4>
+	                                <span class="pct-counter counter">70</span>%
+	                            </h4>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="col-md-3">
+	                    <div class="tile-progress tile-pink bounce-in">
+	                        <div class="tile-header">
+	                            <h3>Marketing</h3>
+	                            <span>offrez vous le monde grace a nos formules.</span>
+	                        </div>
+	                        <div class="tile-progressbar">
+	                            <span data-fill="80%" style="width: 80%;"></span>
+	                        </div>
+	                        <div class="tile-footer">
+	                            <h4>
+	                                <span class="pct-counter counter">80</span>%
+	                            </h4>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div><!--/.row-->
+	            <div class="gap"></div>
+        	</div>
+        </section>
+
+        <section id="about-us" class="white">
+        	<div class="container">
+	            <div class="gap"></div>
+	            <div class="row">
+	                <div class="col-md-12">
+	                    <div class="center gap fade-down section-heading">
+	                        <h2 class="main-title">A propos de nous</h2>
+	                        <hr>
+	                        <p>Notre devise repose sur la qualite du travail rendu et l'amelioration de la qualite des sevices offerts.</p>
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="row">
+	                <div class="col-md-10 col-md-offset-1 fade-up">
+	                    <p>Solution Africa est une Société à Responsabilité Limitée, Sarl en sigle, dont le Siege est basé en Afrique, en République Démocratique du Congo œuvrant dans les secteurs de la Communication à 360° et de l’ingénierie informatique.
+                            Dans ces différents projets, elle a pour objectif de promouvoir la visibilité de l’impact des projets et d’assurer une gestion de qualité des organisations et institutions ; une promotion à 360° et une conception des logiciels de gestion à grande échelle grâce aux outils et moyens technologiques modernes, innovants et sociaux disponibles qui répondent aux problèmes et contexte local.
+                        </p>
+
+	                    <p>Elle est un bureau conseils et accompagne les organisations/établissements pour une meilleure prise en charge de leurs activités dans tous les secteurs notamment gestion de la petite et moyenne entreprise, les collectivités locales, établissements d’enseignement, industriels, commerçants, artisans, professions libérales, associations. …elle réalise les instruments de communication et les logiciels de gestion et dispose des machines et appareils de dernières générations.</p>
+	                    <p>Au-delà du label « Informatique, Imprimerie et Communication à 360°), notre attention sur le respect de  nos clients/partenaires est un véritable état d’esprit de rigueur de façon aussi stricte pour leur fournir un service de qualité.</p>
+	                </div>
+	                <div class="col-md-4 fade-up">
+
+	                </div>
+	            </div>
+
+	            <div class="gap"></div>
+	            <div class="center gap fade-down section-heading">
+	                <h2 class="main-title">Notre Equipe</h2>
+	                <hr>
+	                <p>decouvrez une equipe riche et dynamique.</p>
+	            </div>
+	            <div class="gap"></div>
+
+	            <div id="meet-the-team" class="row">
+	                <div class="col-md-3 col-xs-6">
+	                    <div class="center team-member">
+                            <div class="team-image">
+                                <img class="img-responsive img-thumbnail bounce-in" src="images/team/faby-profile.jpg" alt="">
+                                <div class="overlay">
+                                    <a class="preview btn btn-outlined btn-primary" href="images/team/faby-profile.jpg" rel="prettyPhoto"><i class="fa fa-eye"></i></a>
+                                </div>
+                            </div>
+	                        <div class="team-content fade-up">
+	                            <h5>Fabiola Rugumbira<small class="role muted">Directrice Generale</small></h5>
+	                            <p>Licencie en Informatique de gestion et expert dans la gestion d'entreprise.</p>
+	                            <a class="btn btn-social btn-facebook" href="https://web.facebook.com/faby.rugumbira"><i class="fa fa-facebook"></i></a> <a class="btn btn-social btn-google-plus" href="#"><i class="fa fa-google-plus"></i></a> <a class="btn btn-social btn-twitter" href="#"><i class="fa fa-twitter"></i></a> <a class="btn btn-social btn-linkedin" href="#"><i class="fa fa-linkedin"></i></a>
+	                        </div>
+	                    </div>
+	                </div>
+
+	                <div class="col-md-3 col-xs-6">
+	                    <div class="center team-member">
+                            <div class="team-image">
+                                <img class="img-responsive img-thumbnail bounce-in" src="images/team/reagan-profile.jpg" alt="">
+                                <div class="overlay">
+                                    <a class="preview btn btn-outlined btn-primary" href="images/team/reagan-profile.jpg" rel="prettyPhoto"><i class="fa fa-eye"></i></a>
+                                </div>
+                            </div>
+	                        <div class="team-content fade-up">
+	                            <h5>Reagan Ngoyi Ngembo<small class="role muted">Gerant</small></h5>
+	                            <p>Licencie  En Sciences de l'Information et de la Documentation, Expert en Gestion de l'information
+									Documentation-Archives Formation, maketing digital et management.</p>
+	                            <a class="btn btn-social btn-facebook" href="https://web.facebook.com/reagan.ngoyi"><i class="fa fa-facebook"></i></a> <a class="btn btn-social btn-google-plus" href="#"><i class="fa fa-google-plus"></i></a> <a class="btn btn-social btn-twitter" href="#"><i class="fa fa-twitter"></i></a> <a class="btn btn-social btn-linkedin" href="#"><i class="fa fa-linkedin"></i></a>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="col-md-3 col-xs-6">
+	                    <div class="center team-member">
+                            <div class="team-image">
+                                <img class="img-responsive img-thumbnail bounce-in" src="images/team/lysa-profile.jpg" alt="">
+                                <div class="overlay">
+                                    <a class="preview btn btn-outlined btn-primary" href="images/team/lysa-profile.jpg" rel="prettyPhoto"><i class="fa fa-eye"></i></a>
+                                </div>
+                            </div>
+	                        <div class="team-content fade-up">
+	                            <h5>Lysa Yasmin Binja Selemani<small class="role muted">Direction Technique</small></h5>
+	                            <p>Ingenieure Informaticienne, Expert en conception et realisation des systemes informatique, expert en reseau informatique.</p>
+	                            <a class="btn btn-social btn-facebook" href="https://web.facebook.com/lysa.selemani"><i class="fa fa-facebook"></i></a> <a class="btn btn-social btn-google-plus" href="#"><i class="fa fa-google-plus"></i></a> <a class="btn btn-social btn-twitter" href="#"><i class="fa fa-twitter"></i></a> <a class="btn btn-social btn-linkedin" href="#"><i class="fa fa-linkedin"></i></a>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="col-md-3 col-xs-6">
+	                    <div class="center team-member">
+                            <div class="team-image">
+    	                        <img class="img-responsive img-thumbnail bounce-in" src="images/team/heritier-profile.jpg" alt="">
+                                <div class="overlay">
+                                    <a class="preview btn btn-outlined btn-primary" href="images/team/heritier.jpg" rel="prettyPhoto"><i class="fa fa-eye"></i></a>
+                                </div>
+                            </div>
+	                        <div class="team-content fade-up">
+	                            <h5>Heritier Buela<small class="role muted">Directeur Technique</small></h5>
+	                            <p>Licencie en Electricite, Expert en infographie, photographie et montage video.</p>
+	                            <a class="btn btn-social btn-facebook" href="#"><i class="fa fa-facebook"></i></a> <a class="btn btn-social btn-google-plus" href="#"><i class="fa fa-google-plus"></i></a> <a class="btn btn-social btn-twitter" href="#"><i class="fa fa-twitter"></i></a> <a class="btn btn-social btn-linkedin" href="#"><i class="fa fa-linkedin"></i></a>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div><!--/#meet-the-team-->
+	            <div class="gap"></div>
+	            <div class="gap"></div>
+            </div>
+        </section>
+
+            <section id="blog" class="white">
+                <div class="container">
+                    <div class="center gap fade-down section-heading">
+                   		<div class="gap"></div>
+                        <h2 class="main-title">Quelques annonces</h2>
+                        <hr>
+                        <p>Consulter nos annonces pour rester informer sur tous nos services et les nouveautes dans la communautes de communication.</p>
+                    </div>
+                    <div class="gap"></div>
+                    <div class="row">
+	                    <div class="col-md-4" th:each="item : ${lists}">
+	                        <div class="post">
+	                            <div class="post-img-content">
+	                                <img th:src="${item.pictureUrl}" style="height: 350px; width: 100%" class="img-responsive" />
+	                                <div class="overlay">
+	                                    <a class="preview btn btn-outlined btn-primary" th:href="${item.pictureUrl}"><i class="fa fa-link"></i></a>
+	                                </div>
+	                            </div>
+	                            <div class="content">
+	                                <h2 class="post-title" th:if="${#strings.length(item.title)}>30" th:text="${#strings.substring(item.title, 0,27)+'...'}"></h2>
+	                                <h2 class="post-title" th:unless="${#strings.length(item.title)}>30" th:text="${item.title}"></h2>
+	                                <div class="author">
+	                                    <i class="fa fa-user"></i> Par <b>Author</b> | <i class="fa fa-clock-o"></i> <span th:text="${item.createdDate}"></span>
+	                                </div>
+	                                <div>
+										<span th:if="${#strings.length(item.description)}>85" th:text="${#strings.substring(item.description, 0,82)+'...' }"></span>
+										<span th:unless="${#strings.length(item.description)}>85" th:text="${item.description}"></span>
+	                                    .
+	                                </div>
+	                                <div class="read-more-wrapper">
+	                                    <a th:href="@{/blogs/details/}+${item.id}" class="btn btn-outlined btn-primary">Voir plus</a>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+
+                    </div>
+                    <div class="gap"></div>
+                </div>
+       		</section>
+
+            <section id="contact" class="white">
+                <div class="container">
+                	<div class="gap"></div>
+                    <div class="center gap fade-down section-heading">
+                        <h2 class="main-title">Nous contacter</h2>
+                        <hr>
+                        <p>Laisser nous un message, nous a votre ecoute 6J/7 24H/24.</p>
+                    </div>
+                    <div class="gap"></div>
+                    <div class="row">
+                        <div class="col-md-4 fade-up">
+                            <h3>Contact Information</h3>
+                            <p><span class="icon icon-home"></span>12, Tabulay, ex. Tombalbaye, Kinshasa-Gombe,
+                                Réf. : en diagonal de Super Marché GG Mart, Rond-point Kin-Mart<br/>
+                                <span class="icon icon-phone"></span>+243 819 472 760<br/>
+                                <span class="icon icon-mobile"></span>+243 976 940 074<br/>
+                                <span class="icon icon-envelop"></span> <a href="#">direction@solutionafrica.org</a> <br/>
+                                <span class="icon icon-facebook"></span> <a href="#">Solution Event Agency</a> <br/>
+                            </p>
+                        </div><!-- col -->
+
+                        <div class="col-md-8 fade-up">
+                            <h3>Ecrire un Message</h3>
+                            <br>
+                            <br>
+                            <div id="message"></div>
+                            <form method="post" th:action="@{/comments/save}" th:object="${comment}" id="contactform">
+                                <input type="text" th:field="*{name}" id="name" placeholder="Name" />
+                                <input type="text" th:field="*{email}" id="email" placeholder="Email" />
+                                <textarea th:field="*{contents}" id="comments" placeholder="Comments"></textarea>
+                                <input class="btn btn-outlined btn-primary" type="submit" name="submit" value="Envoyer" />
+                            </form>
+                        </div><!-- col -->
+                    </div><!-- row -->
+                    <div class="gap"></div>
+                </div>
+            </section>
+        </div>
+
+    <div th:replace="~{../templates/fragments/footer :: footer}"></div>
+
+
+
+
+    <script th:src="@{/js/plugins.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/jquery.prettyPhoto.js}"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWDPCiH080dNCTYC-uprmLOn2mt2BMSUk&amp;sensor=true"></script>
+    <script th:src="@{/js/init.js}"></script>
+</body>
+</html>

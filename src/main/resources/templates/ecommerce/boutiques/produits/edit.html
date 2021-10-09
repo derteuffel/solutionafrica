@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Produits | Solution Africa Sarl</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/font-awesome.min.css}" rel="stylesheet">
+    <link th:href="@{/css/pe-icons.css}" rel="stylesheet">
+    <link th:href="@{/css/prettyPhoto.css}" rel="stylesheet">
+    <link th:href="@{/css/animate.css}" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <script th:src="@{/js/jquery.js}"></script>
+    <script th:src="@{/js/html5shiv.js}"></script>
+    <script th:src="@{/js/respond.min.js}"></script>
+    <link rel="shortcut icon" th:href="@{/images/logo.png}">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" th:href="@{/images/ico/apple-touch-icon-144x144.png}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" th:href="@{/images/ico/apple-touch-icon-114x114.png}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" th:href="@{/images/ico/images/ico/apple-touch-icon-72x72.png}">
+    <link rel="apple-touch-icon-precomposed" th:href="@{/images/ico/apple-touch-icon-57x57.png}">
+
+    <script type="text/javascript">
+    jQuery(document).ready(function($){
+    'use strict';
+        jQuery('body').backstretch([
+            "../../../../images/bg/bg4.jpg",
+            "../../../../images/bg/bg3.jpg",
+            "../../../../images/bg/bg5.jpg"
+        ], {duration: 5000, fade: 500});
+
+        $("#mapwrapper").gMap({ controls: false,
+            scrollwheel: false,
+            markers: [{
+                latitude:40.7566,
+                longitude: -73.9863,
+            icon: { image: "images/marker.png",
+                iconsize: [44,44],
+                iconanchor: [12,46],
+                infowindowanchor: [12, 0] } }],
+            icon: {
+                image: "images/marker.png",
+                iconsize: [26, 46],
+                iconanchor: [12, 46],
+                infowindowanchor: [12, 0] },
+            latitude:40.7566,
+            longitude: -73.9863,
+            zoom: 14 });
+    });
+    </script>
+</head><!--/head-->
+<body>
+<div id="preloader"></div>
+    <header th:replace="~{../templates/fragments/header :: header}"></header><!--/header-->
+
+    <section id="single-page-slider" class="no-margin">
+        <div class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="center gap fade-down section-heading">
+                                    <h2 class="main-title">Modification produit</h2>
+                                    <hr>
+                                    <p>Modifier les informations qui ne sont pas correct sur ce.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/.item-->
+            </div><!--/.carousel-inner-->
+        </div><!--/.carousel-->
+    </section><!--/#main-slider-->
+
+    <div id="content-wrapper">
+        <section id="blog" class="white">
+            <div class="container">
+            <div class="gap"></div>
+                <div class="row">
+                    <aside class="col-sm-4 col-sm-push-8">
+                        <!--/.tags-->
+
+                    </aside>
+                    <div class="col-sm-8 col-sm-pull-4">
+                        <div class="blog">
+                            <div class="blog-item">
+                                <form th:action="@{/admin/produits/update}" method="post" th:object="${produit}" enctype="multipart/form-data">
+                                    <div class="modal-body">
+                                        <p class="small">Bien vouloir renseigner les champs ci-dessous pour modifier votre produit</p>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="form-group form-group-default">
+                                                    <label>Nom :</label>
+                                                    <input id="addPosition" type="text" th:field="*{name}" class="form-control" placeholder="Nom du produit">
+                                                    <input  type="hidden" th:field="*{id}" class="form-control" placeholder="Nom du produit">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <div class="form-group form-group-default">
+                                                    <label>Prix : <span th:text="${produit.price+' '+produit.devise}"></span></label>
+                                                    <input id="price" type="text" name="montant" class="form-control" placeholder="Prix du produit">
+                                                    <input  type="text" th:field="*{price}" class="form-control" style="display: none" placeholder="Prix du produit">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <div class="form-group form-group-default">
+                                                    <label>Devise :</label>
+                                                    <select th:field="*{devise}" class="form-control" >
+                                                        <option value="" disabled>-- Choisir une devise --</option>
+                                                        <option th:value="${item}" th:text="${item}" th:each="item : ${T(com.derteuffel.solutionafrica.enums.Devise).values()}"></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <div class="form-group form-group-default">
+                                                    <label>Categorie :</label>
+                                                    <select th:field="*{category}" class="form-control" >
+                                                        <option value="" disabled>-- Choisir une categorie --</option>
+                                                        <option th:value="${item}" th:text="${item}" th:each="item : ${T(com.derteuffel.solutionafrica.enums.ProduitCategories).values()}"></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-sm-12">
+                                                <div class="form-group form-group-default">
+                                                    <label>Couleures disponible :</label>
+                                                    <select th:field="*{colors}" multiple class="form-control" >
+                                                        <option value="" disabled>-- Choisir des couleures --</option>
+                                                        <option th:value="${item}" th:text="${item}" th:each="item : ${T(com.derteuffel.solutionafrica.enums.Colors).values()}"></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <div class="form-group form-group-default">
+                                                    <label for="clientEmail">Image du produit : <img th:src="${produit.pictureUrl}" height="80" width="80" alt=""></label>
+                                                    <input type="file" class="form-control-file" id="clientEmail" name="file" >
+                                                    <input type="text" class="form-control-file"  th:field="*{pictureUrl}" style="display: none" >
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer no-bd">
+                                        <a th:href="@{/admin/produits/lists}"  class="btn btn-danger" data-dismiss="modal">Retour</a>
+                                        <button type="submit"  class="btn btn-primary">Enregistrer</button>
+                                    </div>
+                                </form>
+                            </div><!--/.blog-item-->
+                            <!--/.blog-item-->
+                            <!--/.pagination-->
+                        </div>
+                    </div><!--/.col-md-8-->
+                </div><!--/.row-->
+            </div>
+        </section><!--/#blog-->
+    </div>
+    <div th:replace="~{../templates/fragments/footer :: footer}" ><!--/#footer-->
+    </div>
+
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/jquery.prettyPhoto.js}"></script>
+    <script th:src="@{/js/plugins.js}"></script>
+    <script th:src="@{/js/init.js}"></script>
+</body>
+</html>

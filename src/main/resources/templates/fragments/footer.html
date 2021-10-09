@@ -1,0 +1,65 @@
+<div th:fragment="footer" xmlns:th="http://www.w3.org/1999/xhtml" id="footer-wrapper">
+    <section id="bottom" class="">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6 about-us-widget">
+                    <h4>Pensee Globale</h4>
+                    <p>Nous sommes a votres services pour repondres a tous vos preocupation dans le monde de la communication, le marketing digital et l'ingenieurie informatique.</p>
+                </div><!--/.col-md-3-->
+
+                <div class="col-md-3 col-sm-6">
+                    <h4>Company</h4>
+                    <div>
+                        <ul class="arrow">
+                            <li><a th:href="@{/}">Solution Africa</a></li>
+                            <li><a th:href="@{/blogs}">Nos annonces</a></li>
+                        </ul>
+                    </div>
+                </div><!--/.col-md-3-->
+
+                <div class="col-md-3 col-sm-6">
+                    <h4>Articles recents</h4>
+                    <div th:each=" item : ${footerPosts}">
+                        <div class="media">
+                            <div class="pull-left">
+                                <img class="widget-img" th:src="${item?.pictureUrl}" width="80" height="60" alt="">
+                            </div>
+                            <div class="media-body">
+                                <span class="media-heading">
+                                    <a th:href="@{/blogs/details/}+${item.id}"  th:text="${item?.title}"></a>
+                                </span>
+                                <small class="muted" >Ajouter le <span th:text="${item?.createdDate}"></span></small>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/.col-md-3-->
+
+                <div class="col-md-3 col-sm-6">
+                    <h4>Retrouvez-nous</h4>
+                    <address>
+                        <strong>12, Tabulay, ex. Tombalbaye, Kinshasa-Gombe</strong><br>
+                        Réf. : en diagonal de Super Marché GG Mart,<br>
+                        Rond-point Kin-Mart<br>
+                        <abbr title="Phone"><i class="fa fa-phone"></i></abbr> +243 819 472 760 <br>
+                        <abbr title="Phone"><i class="fa fa-phone"></i></abbr> +243 976 940 074
+                    </address>
+                </div> <!--/.col-md-3-->
+            </div>
+        </div>
+    </section><!--/#bottom-->
+
+    <footer id="footer" class="">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8">
+                    &copy; 2019 Solution Africa Sarl. Tous droits reserver. <a th:href="@{/}">Developper</a> Lysa B.
+                </div>
+                <div class="col-sm-4">
+                    <ul class="pull-right">
+                        <li><a id="gototop" class="gototop" href="#"><i class="fa fa-chevron-up"></i></a></li><!--#gototop-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer><!--/#footer-->
+</div>

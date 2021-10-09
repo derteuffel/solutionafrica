@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Ecommerce | Solution Africa Sarl</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/font-awesome.min.css}" rel="stylesheet">
+    <link th:href="@{/css/pe-icons.css}" rel="stylesheet">
+    <link th:href="@{/css/prettyPhoto.css}" rel="stylesheet">
+    <link th:href="@{/css/animate.css}" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <link th:href="@{/css/owl.carousel.min.css}" rel="stylesheet">
+    <script th:src="@{/js/jquery.js}"></script>
+    <script th:src="@{/js/owl.carousel.min.js}"></script>
+    <script th:src="@{/js/html5shiv.js}"></script>
+    <script th:src="@{/js/respond.min.js}"></script>
+    <link rel="shortcut icon" th:href="@{/images/logo.png}">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" th:href="@{/images/ico/apple-touch-icon-144x144.png}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" th:href="@{/images/ico/apple-touch-icon-114x114.png}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" th:href="@{/images/ico/images/ico/apple-touch-icon-72x72.png}">
+    <link rel="apple-touch-icon-precomposed" th:href="@{/images/ico/apple-touch-icon-57x57.png}">
+
+    <script type="text/javascript">
+    jQuery(document).ready(function($){
+    'use strict';
+        jQuery('body').backstretch([
+            "../../images/bg/bg4.jpg",
+            "../../images/bg/bg3.jpg",
+            "../../images/bg/bg5.jpg"
+        ], {duration: 5000, fade: 500});
+
+        $("#mapwrapper").gMap({ controls: false,
+            scrollwheel: false,
+            markers: [{
+                latitude:40.7566,
+                longitude: -73.9863,
+            icon: { image: "../../images/marker.png",
+                iconsize: [44,44],
+                iconanchor: [12,46],
+                infowindowanchor: [12, 0] } }],
+            icon: {
+                image: "../../images/marker.png",
+                iconsize: [26, 46],
+                iconanchor: [12, 46],
+                infowindowanchor: [12, 0] },
+            latitude:40.7566,
+            longitude: -73.9863,
+            zoom: 14 });
+    });
+    </script>
+</head><!--/head-->
+<body>
+<div id="preloader"></div>
+    <header th:replace="~{../templates/fragments/header :: header}"></header><!--/header-->
+
+    <section id="single-page-slider" class="no-margin">
+        <div class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="center gap fade-down section-heading">
+                                    <h2 class="main-title">E-commerce</h2>
+                                    <hr>
+                                    <p>Faite le plein dans notre boutique en ligne .</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/.item-->
+            </div><!--/.carousel-inner-->
+        </div><!--/.carousel-->
+    </section><!--/#main-slider-->
+
+    <div id="content-wrapper">
+        <section id="blog" class="white">
+            <div class="container">
+            <div class="gap">
+                <hr style="height: 5px">
+            </div>
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h3>Nos boutiques en ligne</h3>
+                    </div>
+                </div>
+                <div class="gap">
+                </div>
+                <div class="row " >
+                    <div class="col-lg-3 ">
+                        <div class="categories__item set-bg" th:attr="data-setbg=@{/images/logo.png}" >
+                            <h5><a href="#" th:text="${'Solution Shop'}">Fresh Fruit</a></h5>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 " >
+                        <div class="row">
+                            <div class="categories__slider owl-carousel">
+                                <div class="col-md-4" style="width: 100%!important;" th:each="shop : ${boutiques}">
+                                    <div class="categories__item set-bg" th:attr="data-setbg=${shop.profile}" >
+                                        <h5><a th:href="@{/ecommerces/}+${shop.id}" th:text="${shop.name}">Fresh Fruit</a></h5>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gap">
+                    <hr style="height: 5px">
+                </div>
+                <div class="row">
+                    <aside class="col-sm-2 col-sm-push-10">
+
+                        <div class="widget categories">
+                            <h3 class="widget-title">Categories d'articles</h3>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <ul class="arrow" th:each=" item : ${T(com.derteuffel.solutionafrica.enums.ProduitCategories).values()}">
+                                        <li><a th:href="@{/ecommerces/lists/}+${item}" th:text="${item}">Baskets</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div><!--/.categories-->
+
+
+                    </aside>
+                    <div class="col-sm-10 col-sm-pull-2">
+                        <div class="blog row">
+                            <a th:href="@{/ecommerces/products/detail/}+${item.id}" class="blog-item col-sm-12 col-md-4 btn" style="max-height: 500px;width: 300px" th:each="item,i : ${lists}">
+                                <div class="blog-featured-image">
+                                    <img class="img-responsive img-blog" th:src="${item.pictureUrl}" style="height: 250px" alt="" />
+                                    <div class="overlay">
+
+                                    </div>
+                                </div>
+                                <div class="blog-content">
+                                    <h6 class="main-title">
+                                        <span th:if="${#strings.length(item.name)< 12}" th:text="${item.name}"></span>
+                                        <span th:unless="${#strings.length(item.name)< 12}" th:text="${#strings.substring(item.name, 0,10)+'..'}"></span>
+                                    </h6>
+                                    <p th:text="${item.price+' '+item.devise}">Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+                                </div>
+                            </a><!--/.blog-item-->
+                        </div>
+                        <nav aria-label="Pagination" th:if="${lists.totalPages gt 0}">
+                            <ul class="pagination pagination-lg">
+                                <li th:classappend="${lists.number eq 0} ? 'disabled'"><a th:href="@{/ecommerces?page={id}(id=${lists.number lt 2 ? 1 : lists.number})}"
+                                                                                          aria-label="Previous" title="Previous Page" data-toggle="tooltip"><i class="fa fa-angle-left"></i></a></li>
+                                <li th:classappend="${i eq lists.number + 1} ? 'active'"
+                                    th:each="i : ${#numbers.sequence( 1, lists.totalPages, 1)}"><a th:href="@{/ecommerces?page={id}(id=${i})}" th:text="${i}"
+                                                                                                   th:title="${'Page '+ i}" data-toggle="tooltip">1</a></li>
+
+                                <li th:classappend="${lists.number + 1 eq lists.totalPages} ? 'disabled'"><a th:href="@{/ecommerces?page={id}(id=${lists.number + 2})}"
+                                                                                                             aria-label="Next" title="Next Page" data-toggle="tooltip"><i class="fa fa-angle-right"></i></a></li>
+                            </ul>
+                        </nav><!--/.pagination-->
+                    </div><!--/.col-md-8-->
+                </div><!--/.row-->
+            </div>
+        </section><!--/#blog-->
+    </div>
+
+    <div th:replace="~{../templates/fragments/footer :: footer}" ><!--/#footer-->
+    </div>
+
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/jquery.prettyPhoto.js}"></script>
+    <script th:src="@{/js/plugins.js}"></script>
+    <script th:src="@{/js/init.js}"></script>
+    <script th:src="@{/js/carousel.js}"></script>
+</body>
+</html>

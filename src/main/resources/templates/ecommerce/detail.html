@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Produits | Solution Africa Sarl</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/font-awesome.min.css}" rel="stylesheet">
+    <link th:href="@{/css/pe-icons.css}" rel="stylesheet">
+    <link th:href="@{/css/prettyPhoto.css}" rel="stylesheet">
+    <link th:href="@{/css/animate.css}" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <script th:src="@{/js/jquery.js}"></script>
+    <script th:src="@{/js/html5shiv.js}"></script>
+    <script th:src="@{/js/respond.min.js}"></script>
+    <link rel="shortcut icon" th:href="@{/images/logo.png}">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" th:href="@{/images/ico/apple-touch-icon-144x144.png}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" th:href="@{/images/ico/apple-touch-icon-114x114.png}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" th:href="@{/images/ico/images/ico/apple-touch-icon-72x72.png}">
+    <link rel="apple-touch-icon-precomposed" th:href="@{/images/ico/apple-touch-icon-57x57.png}">
+
+    <script type="text/javascript">
+    jQuery(document).ready(function($){
+    'use strict';
+        jQuery('body').backstretch([
+            "../../../images/bg/bg4.jpg",
+            "../../../images/bg/bg3.jpg",
+            "../../../images/bg/bg5.jpg"
+        ], {duration: 5000, fade: 500});
+
+        $("#mapwrapper").gMap({ controls: false,
+            scrollwheel: false,
+            markers: [{
+                latitude:40.7566,
+                longitude: -73.9863,
+            icon: { image: "../../images/marker.png",
+                iconsize: [44,44],
+                iconanchor: [12,46],
+                infowindowanchor: [12, 0] } }],
+            icon: {
+                image: "../../images/marker.png",
+                iconsize: [26, 46],
+                iconanchor: [12, 46],
+                infowindowanchor: [12, 0] },
+            latitude:40.7566,
+            longitude: -73.9863,
+            zoom: 14 });
+    });
+    </script>
+</head><!--/head-->
+<body>
+<div id="preloader"></div>
+    <header th:replace="~{../templates/fragments/header :: header}"></header><!--/header-->
+
+    <section id="single-page-slider" class="no-margin">
+        <div class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="center gap fade-down section-heading">
+                                    <h2 class="main-title">Detail informations produit</h2>
+                                    <hr>
+                                    <p th:text="${produit.name}">Vivez avec plein d'emotion nos realisations .</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/.item-->
+            </div><!--/.carousel-inner-->
+        </div><!--/.carousel-->
+    </section><!--/#main-slider-->
+
+    <div id="content-wrapper">
+        <section id="blog" class="white">
+            <div class="container">
+            <div class="gap"></div>
+                <div class="row">
+                    <aside class="col-sm-4 col-sm-push-8">
+
+                        <div class="widget categories">
+                            <h3 class="widget-title">Categories d'articles</h3>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <ul class="arrow" th:each=" item : ${T(com.derteuffel.solutionafrica.enums.ProduitCategories).values()}">
+                                        <li><a th:href="@{/ecommerces/lists/}+${item}" th:text="${item}">Baskets</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div><!--/.categories-->
+
+
+                    </aside>
+                    <div class="col-sm-8 col-sm-pull-4">
+                        <div class="blog">
+                            <div class="blog-item">
+                                <div class="blog-featured-image">
+                                    <img class="img-responsive img-blog" th:src="${produit.pictureUrl}" alt="" />
+                                    <div class="overlay">
+                                        <a class="preview btn btn-outlined btn-primary" th:href="${produit.pictureUrl}" rel="prettyPhoto"><i class="fa fa-link"></i></a>
+                                    </div>
+                                </div>
+                                <div class="blog-content">
+                                    <h3 class="main-title" th:text="${produit.name}">Civility vicinity graceful is it at.</h3>
+                                    <div class="entry-meta">
+                                        <span><i class="fa fa-user"></i> <a href="#" th:text="${produit.boutique.name}"> Danny Jones</a></span>
+                                        <span><i class="fa fa-folder"></i> <a href="#" th:text="${produit.category}"> Style</a></span>
+
+                                    </div>
+                                    <h4 class="lead" th:text="${produit.price+' '+produit.devise}">No comfort do written conduct at prevent manners on. Celebrated contrasted discretion him sympathize her collecting occasional. Do answered bachelor occasion in of offended no concerns. Supply worthy warmth branch of no ye. Voice tried known to as my to. Though wished merits or be. Alone visit use these smart rooms ham. No waiting in on enjoyed placing it inquiry. </h4>
+
+                                    <hr>
+
+                                    <div class="tags">
+                                        <i class="fa fa-tags"></i> Couleures disponibles  <a class="btn btn-xs btn-primary btn-outlined" th:each="item : ${produit.colors}" href="#" th:text="${item}">CSS3</a>
+                                    </div>
+
+                                    <hr>
+
+
+
+                                    <div id="comments">
+
+                                        <div class="gap"></div>
+
+                                        <div id="comment-form">
+                                            <h3  class="main-title">Commander ce produit</h3>
+                                            <hr>
+                                            <form class="form-horizontal" th:object="${commande}" th:action="@{/ecommerces/orders/}+${produit.id}" method="post">
+                                                <div class="form-group">
+                                                    <div class="col-sm-12">
+                                                        <input type="text" class="form-control" name="quantity" placeholder="Nombre d'element">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-sm-12">
+                                                        <input type="text" class="form-control" name="telephone" placeholder="Numero de telephone">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-sm-12">
+                                                        <textarea rows="8" class="form-control" th:field="*{description}" placeholder="Autres details sur votre commande"></textarea>
+                                                    </div>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary btn-outlined">Soumettre</button>
+                                            </form>
+                                        </div><!--/#comment-form-->
+                                    </div><!--/#comments-->
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--/.col-md-8-->
+                </div><!--/.row-->
+            </div>
+        </section><!--/#blog-->
+    </div>
+
+    <div th:replace="~{../templates/fragments/footer :: footer}" ><!--/#footer-->
+    </div>
+
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/jquery.prettyPhoto.js}"></script>
+    <script th:src="@{/js/plugins.js}"></script>
+    <script th:src="@{/js/init.js}"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<header th:fragment="header" xmlns:th="http://www.w3.org/1999/xhtml" class="navbar navbar-inverse navbar-fixed-top " role="banner">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand" th:href="@{/}"><h1><img th:src="@{/images/logo.png}" height="30" width="30" alt="Home image"> SOLUTION AFRICA S.A.R.L</h1></a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a th:href="@{/}">Accueil</a></li>
+                <li><a th:href="@{/ecommerces}">Acheter/Vendre vos produits</a></li>
+                <li th:if="${connectedUser} != null"><a th:href="@{/admin/photographies/lists}">Photographies</a></li>
+                <li th:if="${connectedUser} != null"><a th:href="@{/admin/imprimeries/lists}">Imprimeries</a></li>
+                <li th:if="${connectedUser} != null"><a th:href="@{/admin/posts/lists}">Gest annonces</a></li>
+                <li><a th:if="${connectedUser} != null and ${connectedUser.roles[0]} != 'ROLE_USER'" th:href="@{/admin/users/lists}">Utilisateurs</a></li>
+                <li><a th:if="${connectedUser} != null and ${connectedUser.roles[0]} != 'ROLE_USER'" th:href="@{/admin/boutiques/lists}">Boutiques</a></li>
+                <li><a th:if="${connectedUser} != null" href="#" th:text="${connectedUser.username}">Gestion Utilisateurs</a></li>
+                <li><a th:if="${connectedUser} != null" th:href="@{/admin/logout}" ><i class="fa fa-sign-out"></i></a></li>
+            </ul>
+        </div>
+    </div>
+</header><!--/header-->

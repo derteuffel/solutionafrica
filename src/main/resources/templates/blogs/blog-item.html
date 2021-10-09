@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Annonces | Solution Africa Sarl</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/font-awesome.min.css}" rel="stylesheet">
+    <link th:href="@{/css/pe-icons.css}" rel="stylesheet">
+    <link th:href="@{/css/prettyPhoto.css}" rel="stylesheet">
+    <link th:href="@{/css/animate.css}" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <script th:src="@{/js/jquery.js}"></script>
+    <script th:src="@{/js/html5shiv.js}"></script>
+    <script th:src="@{/js/respond.min.js}"></script>
+    <link rel="shortcut icon" th:href="@{/images/logo.png}">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" th:href="@{/images/ico/apple-touch-icon-144x144.png}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" th:href="@{/images/ico/apple-touch-icon-114x114.png}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" th:href="@{/images/ico/images/ico/apple-touch-icon-72x72.png}">
+    <link rel="apple-touch-icon-precomposed" th:href="@{/images/ico/apple-touch-icon-57x57.png}">
+
+    <script type="text/javascript">
+    jQuery(document).ready(function($){
+    'use strict';
+        jQuery('body').backstretch([
+            "../../images/bg/bg3.jpg",
+            "../../images/bg/bg4.jpg",
+            "../../images/bg/bg5.jpg"
+        ], {duration: 5000, fade: 500});
+
+        $("#mapwrapper").gMap({ controls: false,
+            scrollwheel: false,
+            markers: [{
+                latitude:40.7566,
+                longitude: -73.9863,
+            icon: { image: "images/marker.png",
+                iconsize: [44,44],
+                iconanchor: [12,46],
+                infowindowanchor: [12, 0] } }],
+            icon: {
+                image: "images/marker.png",
+                iconsize: [26, 46],
+                iconanchor: [12, 46],
+                infowindowanchor: [12, 0] },
+            latitude:40.7566,
+            longitude: -73.9863,
+            zoom: 14 });
+    });
+    </script>
+</head><!--/head-->
+<body>
+<div id="preloader"></div>
+    <header th:replace="~{../templates/fragments/header :: header}"></header><!--/header-->
+
+    <section id="single-page-slider" class="no-margin">
+        <div class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="center gap fade-down section-heading">
+                                    <h2 class="main-title">Annonces</h2>
+                                    <hr>
+                                    <p th:text="${post.title}">Vivez avec plein d'emotion nos realisations .</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/.item-->
+            </div><!--/.carousel-inner-->
+        </div><!--/.carousel-->
+    </section><!--/#main-slider-->
+
+    <div id="content-wrapper">
+        <section id="blog" class="white">
+            <div class="container">
+            <div class="gap"></div>
+                <div class="row">
+                    <aside class="col-sm-4 col-sm-push-8">
+
+                        <div class="widget categories">
+                            <h3 class="widget-title">Categories d'annonces</h3>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <ul class="arrow">
+                                        <li><a th:href="@{/blogs/lists/}+${'Fashion'}">Fashion</a></li>
+                                        <li><a th:href="@{/blogs/lists/}+${'Design'}">Design</a></li>
+                                        <li><a th:href="@{/blogs/lists/}+${'Music'}">Music</a></li>
+                                        <li><a th:href="@{/blogs/lists/}+${'Photographie'}">Photographie</a></li>
+                                        <li><a th:href="@{/blogs/lists/}+${'Evenementiel'}">Evenementiel</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-6">
+                                    <ul class="arrow">
+                                        <li><a th:href="@{/blogs/lists/}+${'Web_Design'}">Web Design</a></li>
+                                        <li><a th:href="@{/blogs/lists/}+${'Imprimerie'}">Imprimerie</a></li>
+                                        <li><a th:href="@{/blogs/lists/}+${'Informatique'}">Informatique</a></li>
+                                        <li><a th:href="@{/blogs/lists/}+${'Autres'}">Autres</a></li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div><!--/.categories-->
+
+
+                    </aside>
+                    <div class="col-sm-8 col-sm-pull-4">
+                        <div class="blog">
+                            <div class="blog-item">
+                                <div class="blog-featured-image">
+                                    <img class="img-responsive img-blog" th:src="${post.pictureUrl}" alt="" />
+                                    <div class="overlay">
+                                        <a class="preview btn btn-outlined btn-primary" th:href="${post.pictureUrl}" rel="prettyPhoto"><i class="fa fa-link"></i></a>
+                                    </div>
+                                </div>
+                                <div class="blog-content">
+                                    <h3 class="main-title" th:text="${post.title}">Civility vicinity graceful is it at.</h3>
+                                    <div class="entry-meta">
+                                        <span><i class="fa fa-user"></i> <a href="#"> Danny Jones</a></span>
+                                        <span><i class="fa fa-folder"></i> <a href="#" th:text="${post.category}"> Style</a></span>
+                                        <span><i class="fa fa-clock-o"></i> <span th:text="${post.createdDate}"></span></span>
+                                        <span><i class="fa fa-comment"></i> <a href="blog-item.html#comments"><span class="counter" th:text="${commentSize}">14</span> Commentaire(s)</a></span>
+                                    </div>
+                                    <p class="lead" th:text="${post.description}">No comfort do written conduct at prevent manners on. Celebrated contrasted discretion him sympathize her collecting occasional. Do answered bachelor occasion in of offended no concerns. Supply worthy warmth branch of no ye. Voice tried known to as my to. Though wished merits or be. Alone visit use these smart rooms ham. No waiting in on enjoyed placing it inquiry. </p>
+
+                                    <hr>
+
+                                    <div class="tags">
+                                        <i class="fa fa-tags"></i> Mots cles  <a class="btn btn-xs btn-primary btn-outlined" th:each="item : ${post.tags}" href="#" th:text="${item}">CSS3</a>
+                                    </div>
+
+                                    <hr>
+
+
+
+                                    <div id="comments">
+                                        <div id="comments-list">
+                                            <h3><span th:text="${#lists.size(comments)}"></span> Commentaire(s)</h3>
+                                            <div class="media" th:each="item : ${comments}">
+                                                <div class="pull-left">
+                                                    <img class="avatar img-thumbnail comment-avatar" src="http://placehold.it/400x400" alt="">
+                                                </div>
+                                                <div class="media-body">
+                                                    <div class="well">
+                                                        <div class="media-heading">
+                                                            <strong th:text="${item.name}">Dave Evans</strong>&nbsp; <small th:text="${item.addedDate}">30th Jan, 2014</small>
+                                                        </div>
+                                                        <p th:text="${item.contents}">Was are delightful solicitude discovered collecting man day. Resolving neglected sir tolerably but existence conveying for. Day his put off unaffected literature partiality inhabiting.</p>
+                                                    </div>
+                                                    <!--/.media-->
+                                                </div>
+                                            </div><!--/.media-->
+                                        </div><!--/#comments-list-->
+                                        <div class="gap"></div>
+
+                                        <div id="comment-form">
+                                            <h3  class="main-title">Laissez un commentaire</h3>
+                                            <hr>
+                                            <form class="form-horizontal" th:object="${comment}" th:action="@{/blogs/comments/}+${post.id}" method="post">
+                                                <div class="form-group">
+                                                    <div class="col-sm-6">
+                                                        <input type="text" class="form-control" th:field="*{name}" placeholder="Name">
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <input type="email" class="form-control" th:field="*{email}" placeholder="Email">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-sm-12">
+                                                        <textarea rows="8" class="form-control" th:field="*{contents}" placeholder="Comment"></textarea>
+                                                    </div>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary btn-outlined">Commenter</button>
+                                            </form>
+                                        </div><!--/#comment-form-->
+                                    </div><!--/#comments-->
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--/.col-md-8-->
+                </div><!--/.row-->
+            </div>
+        </section><!--/#blog-->
+    </div>
+
+    <div th:replace="~{../templates/fragments/footer :: footer}" ><!--/#footer-->
+    </div>
+
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/jquery.prettyPhoto.js}"></script>
+    <script th:src="@{/js/plugins.js}"></script>
+    <script th:src="@{/js/init.js}"></script>
+</body>
+</html>

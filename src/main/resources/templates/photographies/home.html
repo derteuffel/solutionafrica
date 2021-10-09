@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Photographies | Solution Africa Sarl</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/font-awesome.min.css}" rel="stylesheet">
+    <link th:href="@{/css/pe-icons.css}" rel="stylesheet">
+    <link th:href="@{/css/prettyPhoto.css}" rel="stylesheet">
+    <link th:href="@{/css/animate.css}" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <script th:src="@{/js/jquery.js}"></script>
+    <script th:src="@{/js/html5shiv.js}"></script>
+    <script th:src="@{/js/respond.min.js}"></script>
+    <link rel="shortcut icon" th:href="@{/images/logo.png}">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" th:href="@{/images/ico/apple-touch-icon-144x144.png}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" th:href="@{/images/ico/apple-touch-icon-114x114.png}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" th:href="@{/images/ico/images/ico/apple-touch-icon-72x72.png}">
+    <link rel="apple-touch-icon-precomposed" th:href="@{/images/ico/apple-touch-icon-57x57.png}">
+
+    <script type="text/javascript">
+    jQuery(document).ready(function($){
+    'use strict';
+        jQuery('body').backstretch([
+            "../../images/bg/bg4.jpg",
+            "../../images/bg/bg3.jpg",
+            "../../images/bg/bg5.jpg"
+        ], {duration: 5000, fade: 500});
+
+        $("#mapwrapper").gMap({ controls: false,
+            scrollwheel: false,
+            markers: [{
+                latitude:40.7566,
+                longitude: -73.9863,
+            icon: { image: "../../images/marker.png",
+                iconsize: [44,44],
+                iconanchor: [12,46],
+                infowindowanchor: [12, 0] } }],
+            icon: {
+                image: "../../images/marker.png",
+                iconsize: [26, 46],
+                iconanchor: [12, 46],
+                infowindowanchor: [12, 0] },
+            latitude:40.7566,
+            longitude: -73.9863,
+            zoom: 14 });
+    });
+    </script>
+</head><!--/head-->
+<body>
+<div id="preloader"></div>
+    <header th:replace="~{../templates/fragments/header :: header}"></header><!--/header-->
+
+    <section id="single-page-slider" class="no-margin">
+        <div class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="center gap fade-down section-heading">
+                                    <h2 class="main-title">Photographies</h2>
+                                    <hr>
+                                    <p>Consultez nos realisations dans le domaine de la photographie</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/.item-->
+            </div><!--/.carousel-inner-->
+        </div><!--/.carousel-->
+    </section><!--/#main-slider-->
+
+    <div id="content-wrapper">
+        <section id="blog" class="white">
+            <div class="container">
+            <div class="gap"></div>
+                <div class="row">
+                    <aside class="col-sm-2 col-sm-push-10">
+
+                        <div class="widget categories">
+                            <h3 class="widget-title">Categories de photos</h3>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <ul class="arrow" th:each="item : ${categories}">
+                                        <li><a th:href="@{/ecommerces/photographies/lists/}+${item}" th:text="${item}">Mariages</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div><!--/.categories-->
+
+
+                    </aside>
+                    <div class="col-sm-10 col-sm-pull-2">
+                        <div class="blog row">
+                            <div class="alert alert-warning text-center" th:if="${#lists.size(lists)}== 0">
+                                <h1><i class="fa fa-exclamation-triangle"></i><br> Aucun element trouver pour cette categorie</h1>
+                            </div>
+                            <div class="blog-item col-sm-12 col-md-4 btn" style="max-height: 500px;width: 300px" th:each="item,i : ${lists}" th:unless="${#lists.size(lists)}== 0">
+                                <div class="blog-featured-image">
+                                    <img class="img-responsive img-blog" th:src="${item.pictureUrl}" style="height: 250px" alt="" />
+                                    <div class="overlay">
+
+                                    </div>
+                                </div>
+                                <div class="blog-content">
+                                    <h6 class="main-title">
+                                        <span th:if="${#strings.length(item.title)< 12}" th:text="${item.title}"></span>
+                                        <span th:unless="${#strings.length(item.title)< 12}" th:text="${#strings.substring(item.title, 0,10)+'..'}"></span>
+                                    </h6>
+                                    <p th:text="${'Realiser le : '+item.releaseDate}">Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+                                </div>
+                            </div><!--/.blog-item-->
+                        </div>
+                        <nav aria-label="Pagination" th:if="${lists.totalPages gt 0}">
+                            <ul class="pagination pagination-lg">
+                                <li th:classappend="${lists.number eq 0} ? 'disabled'"><a th:href="@{/ecommerces/photographies/lists?page={id}(id=${lists.number lt 2 ? 1 : lists.number})}"
+                                                                                          aria-label="Previous" title="Previous Page" data-toggle="tooltip"><i class="fa fa-angle-left"></i></a></li>
+                                <li th:classappend="${i eq lists.number + 1} ? 'active'"
+                                    th:each="i : ${#numbers.sequence( 1, lists.totalPages, 1)}"><a th:href="@{/ecommerces/photographies/lists?page={id}(id=${i})}" th:text="${i}"
+                                                                                                   th:title="${'Page '+ i}" data-toggle="tooltip">1</a></li>
+
+                                <li th:classappend="${lists.number + 1 eq lists.totalPages} ? 'disabled'"><a th:href="@{/ecommerces/photographies/lists?page={id}(id=${lists.number + 2})}"
+                                                                                                             aria-label="Next" title="Next Page" data-toggle="tooltip"><i class="fa fa-angle-right"></i></a></li>
+                            </ul>
+                        </nav><!--/.pagination-->
+                    </div><!--/.col-md-8-->
+                </div><!--/.row-->
+            </div>
+        </section><!--/#blog-->
+    </div>
+
+    <div th:replace="~{../templates/fragments/footer :: footer}" ><!--/#footer-->
+    </div>
+
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/jquery.prettyPhoto.js}"></script>
+    <script th:src="@{/js/plugins.js}"></script>
+    <script th:src="@{/js/init.js}"></script>
+</body>
+</html>
